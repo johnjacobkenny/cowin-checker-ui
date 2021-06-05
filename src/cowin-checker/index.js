@@ -1,17 +1,12 @@
 import * as cowin from "cowin-api-wrapper";
 import config from "./config";
 
-const {
-  prettyCenter,
-  prettySession,
-  prettyTitle,
-  get3Dates,
-} = require("./util");
+const { prettyCenter, prettySession, prettyTitle } = require("./util");
 
-async function main() {
-  const next3Dates = get3Dates();
-  await Promise.all(next3Dates.map(findAppointmentsForDate));
-}
+// async function main() {
+//   const next3Dates = get3Dates();
+//   await Promise.all(next3Dates.map(findAppointmentsForDate));
+// }
 
 async function findAppointmentsForDate(date) {
   const responses = await Promise.all(
