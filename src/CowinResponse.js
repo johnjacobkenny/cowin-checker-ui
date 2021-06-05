@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import * as cowin from "cowin-api-wrapper";
 import { checkResponseForErrors, listAvailableSlots } from "./cowin-checker";
-// import { available } from "./cowin-checker/filters";
+import { available } from "./cowin-checker/filters";
 
 function CowinResponse({ data }) {
   const [response, setResponse] = useState("");
@@ -18,7 +18,7 @@ function CowinResponse({ data }) {
           response = await cowin.findAppointmentsByDistrict(it);
         }
         // const { error } = checkResponseForErrors(response);
-        const res = listAvailableSlots(response.appointments, []);
+        const res = listAvailableSlots(response.appointments, [available]);
 
         setResponse(res);
       });

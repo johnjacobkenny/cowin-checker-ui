@@ -1,4 +1,4 @@
-const available = (session) => session.available_capacity > 5;
+const available = (session) => session.available_capacity > 2;
 const dose1 = (session) => session.available_capacity_dose1 > 0;
 const dose2 = (session) => session.available_capacity_dose2 > 0;
 const above18 = (session) => session.min_age_limit === 18;
