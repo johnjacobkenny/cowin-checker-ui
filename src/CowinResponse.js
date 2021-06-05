@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import * as cowin from "cowin-api-wrapper";
-import { checkResponseForErrors, listAvailableSlots } from "./cowin-checker";
+import { listAvailableSlots } from "./cowin-checker";
 import { available } from "./cowin-checker/filters";
 
 function CowinResponse({ data }) {

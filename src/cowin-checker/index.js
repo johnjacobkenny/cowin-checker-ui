@@ -1,39 +1,39 @@
-import * as cowin from "cowin-api-wrapper";
-import config from "./config";
+// import * as cowin from "cowin-api-wrapper";
+// import config from "./config";
 
-const { prettyCenter, prettySession, prettyTitle } = require("./util");
+const { prettyCenter, prettySession } = require("./util");
 
 // async function main() {
 //   const next3Dates = get3Dates();
 //   await Promise.all(next3Dates.map(findAppointmentsForDate));
 // }
 
-async function findAppointmentsForDate(date) {
-  const responses = await Promise.all(
-    config.locations.map(async (loc) => {
-      let response;
+// async function findAppointmentsForDate(date) {
+//   const responses = await Promise.all(
+//     config.locations.map(async (loc) => {
+//       let response;
 
-      if (loc.type === "pincode") {
-        response = await cowin.findAppointmentsByPin(loc.pincode, { date });
-      } else {
-        response = await cowin.findAppointmentsByDistrict(loc.districtId, {
-          date,
-        });
-      }
+//       if (loc.type === "pincode") {
+//         response = await cowin.findAppointmentsByPin(loc.pincode, { date });
+//       } else {
+//         response = await cowin.findAppointmentsByDistrict(loc.districtId, {
+//           date,
+//         });
+//       }
 
-      const { error } = checkResponseForErrors(response);
-      if (error) return { title: loc.title };
+//       const { error } = checkResponseForErrors(response);
+//       if (error) return { title: loc.title };
 
-      return { data: response, title: loc.title, filters: loc.filters };
-    })
-  );
+//       return { data: response, title: loc.title, filters: loc.filters };
+//     })
+// //   );
 
-  responses.forEach(({ data, filters, title }) => {
-    console.log(prettyTitle(title, date));
-    if (data) listAvailableSlots(data.appointments, filters);
-    console.log("\n");
-  });
-}
+//   responses.forEach(({ data, filters, title }) => {
+//     console.log(prettyTitle(title, date));
+//     if (data) listAvailableSlots(data.appointments, filters);
+//     console.log("\n");
+//   });
+// }
 
 function listAvailableSlots(appointments, filters) {
   let response = "";
