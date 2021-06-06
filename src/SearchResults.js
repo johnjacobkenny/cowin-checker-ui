@@ -18,10 +18,12 @@ function SearchResults({ data }) {
   }, [data]);
 
   return (
-    <pre>
-      {isLoading && "Loading ..."}
-      {response}
-    </pre>
+    <div style={{ marginTop: 32 }}>
+      <pre>
+        {isLoading ? <h2>Loading</h2> : <h2>Results</h2>}
+        {response}
+      </pre>
+    </div>
   );
 }
 

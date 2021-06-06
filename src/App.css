@@ -1,5 +1,17 @@
 .App {
   text-align: left;
+  font-family: "Source Sans Pro", sans-serif;
+  padding: 20px;
+}
+
+h1,
+h2 {
+  margin: 0;
+  margin-bottom: 0.4em;
+}
+
+pre {
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .App-logo {

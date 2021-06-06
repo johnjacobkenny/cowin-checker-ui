@@ -5,7 +5,7 @@ function InitialTip() {
         href="https://github.com/johnjacobkenny/cowin-checker#district-id-lookup"
         target="_blank"
       >
-        District ID lookup
+        Click here to find your district ID
       </a>
     </div>
   );
