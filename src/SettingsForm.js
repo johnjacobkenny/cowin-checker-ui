@@ -29,7 +29,12 @@ function SettingsForm({ data, onSave }) {
         onChange={handlePincodeOrDistrictIDChange}
         value={pincodeOrDistrictID}
       />
-      <input type="button" onClick={handleSaveClick} value="Save and refresh" />
+      <input
+        type="button"
+        onClick={handleSaveClick}
+        value="Save and reload"
+        style={{ marginLeft: 8 }}
+      />
     </div>
   );
 }
