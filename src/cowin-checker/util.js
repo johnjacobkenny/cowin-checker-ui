@@ -1,6 +1,6 @@
-function get3Dates() {
+function getNDates(n = 3) {
   const dates = [];
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 1; i <= n; i++) {
     const date = new Date();
     dates.push(date.setDate(date.getDate() + i));
   }
@@ -30,4 +30,4 @@ function prettySession({
   return `${date}: ${vaccine} for age ${age}+. Dose 1: ${dose1}, Dose 2: ${dose2}`;
 }
 
-export { get3Dates, prettyCenter, prettySession, prettyTitle };
+export { getNDates, prettyCenter, prettySession, prettyTitle };

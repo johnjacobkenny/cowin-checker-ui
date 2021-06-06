@@ -1,39 +1,31 @@
-// import * as cowin from "cowin-api-wrapper";
-// import config from "./config";
+import * as cowin from "cowin-api-wrapper";
+import { available } from "./filters";
 
-const { prettyCenter, prettySession } = require("./util");
+const { prettyCenter, prettySession, getNDates } = require("./util");
 
-// async function main() {
-//   const next3Dates = get3Dates();
-//   await Promise.all(next3Dates.map(findAppointmentsForDate));
-// }
+async function getCowinData(pincodeOrDistrictId) {
+  const dates = getNDates(5);
 
-// async function findAppointmentsForDate(date) {
-//   const responses = await Promise.all(
-//     config.locations.map(async (loc) => {
-//       let response;
+  const responses = await Promise.all(
+    dates.map(async (date) => {
+      let response;
+      if (pincodeOrDistrictId > 999) {
+        response = await cowin.findAppointmentsByPin(pincodeOrDistrictId, {
+          date,
+        });
+      } else {
+        response = await cowin.findAppointmentsByDistrict(pincodeOrDistrictId, {
+          date,
+        });
+      }
+      // const { error } = checkResponseForErrors(response);
+      const res = listAvailableSlots(response.appointments, [available]);
+      return res;
+    })
+  );
 
-//       if (loc.type === "pincode") {
-//         response = await cowin.findAppointmentsByPin(loc.pincode, { date });
-//       } else {
-//         response = await cowin.findAppointmentsByDistrict(loc.districtId, {
-//           date,
-//         });
-//       }
-
-//       const { error } = checkResponseForErrors(response);
-//       if (error) return { title: loc.title };
-
-//       return { data: response, title: loc.title, filters: loc.filters };
-//     })
-// //   );
-
-//   responses.forEach(({ data, filters, title }) => {
-//     console.log(prettyTitle(title, date));
-//     if (data) listAvailableSlots(data.appointments, filters);
-//     console.log("\n");
-//   });
-// }
+  return Promise.resolve(responses.join("\n"));
+}
 
 function listAvailableSlots(appointments, filters) {
   let response = "";
@@ -71,4 +63,4 @@ function checkResponseForErrors(response) {
   return { error: false };
 }
 
-export { checkResponseForErrors, listAvailableSlots };
+export { getCowinData };

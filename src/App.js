@@ -1,15 +1,19 @@
 import "./App.css";
-import { useLocalstorage } from "./useLocalstorage";
-import DistrictInput from "./DistrictInput";
-import CowinResponse from "./CowinResponse";
+import SettingsForm from "./SettingsForm";
+import SearchResults from "./SearchResults";
+import UsageTip from "./UsageTip";
+import { useHashStorage } from "./useHashStorage";
+import InitialTip from "./UsageTip";
 
 function App() {
-  const [data, setData] = useLocalstorage();
+  const [data, setData] = useHashStorage();
 
   return (
     <div className="App">
-      <DistrictInput data={data} onSave={setData} />
-      <CowinResponse data={data} />
+      {/* <InitialTip /> */}
+      <SettingsForm data={data} onSave={setData} />
+      {data && <UsageTip />}
+      {data && <SearchResults data={data} />}
     </div>
   );
 }
