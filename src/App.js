@@ -14,6 +14,11 @@ function App() {
       <SettingsForm data={data} onSave={setData} />
       {data && <UsageTip />}
       {data && <SearchResults data={data} />}
+      {data && (
+        <a href="https://selfregistration.cowin.gov.in/" target="_blank">
+          Open COWIN Site
+        </a>
+      )}
     </div>
   );
 }
