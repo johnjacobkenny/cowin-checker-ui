@@ -3,7 +3,7 @@ import SettingsForm from "./SettingsForm";
 import SearchResults from "./SearchResults";
 import UsageTip from "./UsageTip";
 import { useHashStorage } from "./useHashStorage";
-import InitialTip from "./UsageTip";
+import InitialTip from "./InitialTip";
 
 function App() {
   const [data, setData] = useHashStorage();
