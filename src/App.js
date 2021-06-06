@@ -10,7 +10,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <InitialTip /> */}
+      <InitialTip />
       <SettingsForm data={data} onSave={setData} />
       {data && <UsageTip />}
       {data && <SearchResults data={data} />}
